@@ -46,11 +46,13 @@
     return [NSString stringWithFormat:@"\
             %@ %p \n\
             imageURL: %@ \n\
-            referenceRect: (%g, %g) (%g, %g)",
+            referenceRect: %@ \n\
+            edgePadding: %f",
             
             NSStringFromClass(self.class), self,
             self.imageURL,
-            self.referenceRect.origin.x, self.referenceRect.origin.y, self.referenceRect.size.width, self.referenceRect.size.height
+            NSStringFromCGRect(self.referenceRect),
+            self.edgePadding
             ];
 }
 

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIView *referenceView;
 @property (assign, nonatomic) UIViewContentMode referenceContentMode;
 @property (assign, nonatomic) CGFloat referenceCornerRadius;
+@property (assign, nonatomic) CGFloat edgePadding;
 @property (copy, nonatomic) NSMutableDictionary *userInfo;
 
 - (NSString *)displayableTitleAltTextSummary;
