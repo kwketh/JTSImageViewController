@@ -442,8 +442,13 @@ typedef struct {
     
     CGRect referenceFrameInWindow = [self.imageInfo.referenceView convertRect:self.imageInfo.referenceRect toView:nil];
     CGRect referenceFrameInMyView = [self.view convertRect:referenceFrameInWindow fromView:nil];
-    
-    self.imageView = [[UIImageView alloc] initWithFrame:referenceFrameInMyView];
+
+    if (self.imageView == nil) {
+        self.imageView = [[UIImageView alloc] initWithFrame:referenceFrameInMyView];
+    } else {
+        self.imageView.frame = referenceFrameInMyView;
+    }
+
     self.imageView.layer.cornerRadius = self.imageInfo.referenceCornerRadius;
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.userInteractionEnabled = YES;
