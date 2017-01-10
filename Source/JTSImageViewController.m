@@ -1509,18 +1509,18 @@ typedef struct {
     CGFloat minContentWidth;
     if (contentHeight > contentWidth) {
         if (boundsHeight/boundsWidth < contentHeight/contentWidth) {
-            minContentHeight = boundsHeight;
+            minContentHeight = boundsHeight - (_imageInfo.edgePadding * 2);
             minContentWidth = contentWidth * (minContentHeight / contentHeight);
         } else {
-            minContentWidth = boundsWidth;
+            minContentWidth = boundsWidth - (_imageInfo.edgePadding * 2);
             minContentHeight = contentHeight * (minContentWidth / contentWidth);
         }
     } else {
         if (boundsWidth/boundsHeight < contentWidth/contentHeight) {
-            minContentWidth = boundsWidth;
+            minContentWidth = boundsWidth - (_imageInfo.edgePadding * 2);
             minContentHeight = contentHeight * (minContentWidth / contentWidth);
         } else {
-            minContentHeight = boundsHeight;
+            minContentHeight = boundsHeight - (_imageInfo.edgePadding * 2);
             minContentWidth = contentWidth * (minContentHeight / contentHeight);
         }
     }
@@ -1545,8 +1545,8 @@ typedef struct {
 
 - (CGRect)resizedFrameForAutorotatingImageView:(CGSize)imageSize {
     CGRect frame = self.view.bounds;
-    CGFloat screenWidth = frame.size.width * self.scrollView.zoomScale;
-    CGFloat screenHeight = frame.size.height * self.scrollView.zoomScale;
+    CGFloat screenWidth = frame.size.width - (_imageInfo.edgePadding * 2) * self.scrollView.zoomScale;
+    CGFloat screenHeight = frame.size.height - (_imageInfo.edgePadding * 2) * self.scrollView.zoomScale;
     CGFloat targetWidth = screenWidth;
     CGFloat targetHeight = screenHeight;
     CGFloat nativeHeight = screenHeight;
