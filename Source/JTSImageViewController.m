@@ -1278,7 +1278,7 @@ typedef struct {
     // that is scaled down by a factor of 4, which will dramatically improve
     // the performance of JTS_applyBlurWithRadius:tintColor:saturationDeltaFactor:maskImage:
     
-    CGFloat outerBleed = 20.0f;
+    CGFloat outerBleed = 0.0f;
     CGFloat performanceDownScalingFactor = 0.25f;
     CGFloat scaledOuterBleed = outerBleed * performanceDownScalingFactor;
     CGRect contextBounds = CGRectInset(presentingViewController.view.bounds, -outerBleed, -outerBleed);
