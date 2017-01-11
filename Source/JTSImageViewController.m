@@ -1334,20 +1334,14 @@ typedef struct {
 #pragma mark - Interface Updates
 
 - (void)updateInterfaceWithImage:(UIImage *)image {
-
+    
     if (image) {
         self.image = image;
         self.imageView.image = image;
         self.progressContainer.alpha = 0;
-
+        
         self.imageView.backgroundColor = [self backgroundColorForImageView];
-
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        // change content mode for small images (don't zoom in)
-        if ((image.size.width*image.scale) < self.imageView.frame.size.width && (image.size.height*image.scale) < self.imageView.frame.size.height) {
-            self.imageView.contentMode = UIViewContentModeCenter;
-        }
-
+        
         // Don't update the layouts during a drag.
         if (_flags.isDraggingImage == NO) {
             [self updateLayoutsForCurrentOrientation];
