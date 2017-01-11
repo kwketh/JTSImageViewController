@@ -884,7 +884,7 @@ typedef struct {
         // Replace the text view with a snapshot of itself,
         // to prevent the text from reflowing during the dismissal animation.
         [weakSelf verticallyCenterTextInTextView];
-        UIView *textViewSnapshot = [weakSelf.textView snapshotViewAfterScreenUpdates:YES];
+        UIView *textViewSnapshot = [weakSelf.textView snapshotViewAfterScreenUpdates:NO];
         textViewSnapshot.frame = weakSelf.textView.frame;
         [weakSelf.textView.superview insertSubview:textViewSnapshot aboveSubview:self.textView];
         weakSelf.textView.hidden = YES;
@@ -1219,7 +1219,7 @@ typedef struct {
     
     // Replace the text view with a snapshot of itself,
     // to prevent the text from reflowing during the dismissal animation.
-    UIView *textViewSnapshot = [self.textView snapshotViewAfterScreenUpdates:YES];
+    UIView *textViewSnapshot = [self.textView snapshotViewAfterScreenUpdates:NO];
     textViewSnapshot.frame = self.textView.frame;
     [self.textView.superview insertSubview:textViewSnapshot aboveSubview:self.textView];
     [self.textView removeFromSuperview];
@@ -1264,7 +1264,7 @@ typedef struct {
     
     UIViewController *presentingViewController = viewController.view.window.rootViewController;
     while (presentingViewController.presentedViewController) presentingViewController = presentingViewController.presentedViewController;
-    UIView *snapshot = [presentingViewController.view snapshotViewAfterScreenUpdates:YES];
+    UIView *snapshot = [presentingViewController.view snapshotViewAfterScreenUpdates:NO];
     snapshot.clipsToBounds = NO;
     return snapshot;
 }
@@ -1292,7 +1292,7 @@ typedef struct {
     UIGraphicsBeginImageContextWithOptions(scaledBounds.size, YES, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextConcatCTM(context, CGAffineTransformMakeTranslation(scaledOuterBleed, scaledOuterBleed));
-    [presentingViewController.view drawViewHierarchyInRect:scaledDrawingArea afterScreenUpdates:YES];
+    [presentingViewController.view drawViewHierarchyInRect:scaledDrawingArea afterScreenUpdates:NO];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
